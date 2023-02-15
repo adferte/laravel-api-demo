@@ -1,5 +1,7 @@
 <?php
 
+use App\PokeAPI\Controllers\PokemonController;
+use App\PokeAPI\Controllers\TypeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('pokemon', [PokemonController::class, 'get']);
+    Route::get('types', [TypeController::class, 'get']);
 });

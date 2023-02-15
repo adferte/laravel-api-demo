@@ -13,11 +13,13 @@ class Type extends Model
     const ID = 'id';
     const NAME = 'name';
 
+    const TABLE = 'types';
+
     protected $fillable = [
         self::NAME,
     ];
 
-    protected $table = 'types';
+    protected $table = self::TABLE;
 
     public function pokemon(): BelongsToMany
     {

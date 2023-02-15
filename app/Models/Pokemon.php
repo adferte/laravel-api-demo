@@ -15,13 +15,15 @@ class Pokemon extends Model
     const NAME = 'name';
     const IMAGE = 'image';
 
+    const TABLE = 'pokemons';
+
     protected $fillable = [
         self::POKEDEX_NUMBER,
         self::NAME,
         self::IMAGE,
     ];
 
-    protected $table = 'pokemons';
+    protected $table = self::TABLE;
 
     public function types(): BelongsToMany
     {

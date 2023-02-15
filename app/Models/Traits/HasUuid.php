@@ -11,10 +11,18 @@ trait HasUuid
     {
         parent::boot();
         static::creating(function (Model $model) {
-
-            $model->setKeyType('string');
-            $model->setIncrementing(false);
             $model->setAttribute($model->getKeyName(), Uuid::uuid4());
         });
     }
+
+    public function getKeyType()
+    {
+        return 'string';
+    }
+
+    public function getIncrementing()
+    {
+        return false;
+    }
+
 }

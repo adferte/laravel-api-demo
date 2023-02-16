@@ -2,8 +2,10 @@
 
 namespace App\Console\Commands;
 
+use App\Models\User;
 use App\PokeAPI\Connectors\PokeApiConnector;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Hash;
 
 class GetPokeApiDataCommand extends Command
 {
@@ -26,6 +28,14 @@ class GetPokeApiDataCommand extends Command
      */
     public function handle(): void
     {
-        (new PokeApiConnector())->connect();
+        // (new PokeApiConnector())->connect();
+
+        // Create user to test API functionality
+        if (User::where(User::EMAIL, 'test@mail.com')->count() < 1) {
+            User::factory()->create([
+                User::EMAIL => 'test@mail.com',
+                User::PASSWORD => Hash::make('test'),
+            ]);
+        }
     }
 }

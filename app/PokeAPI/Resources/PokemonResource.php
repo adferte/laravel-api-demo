@@ -14,6 +14,7 @@ class PokemonResource extends JsonResource
             'pokedex' => $this->{Pokemon::POKEDEX_NUMBER},
             'name' => ucfirst($this->{Pokemon::NAME}),
             'image' => $this->{Pokemon::IMAGE},
+            'types' => TypeResource::collection($this->types),
         ];
     }
 }

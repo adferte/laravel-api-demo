@@ -18,10 +18,6 @@ Route::post('login', LoginController::class)->name('login');
 
 Route::middleware('auth:sanctum')->group(function () {
 
-    // TODO
-    //  Comprobar que se lanza bien desde cero
-    //  Preparar GitHub, README y enviar por mail el proyecto
-
     // ApiContext
     Route::name('apiContext')
         ->group(__DIR__ . '/apiContext/routes.php');

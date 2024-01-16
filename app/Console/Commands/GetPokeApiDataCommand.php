@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\PokeAPIContext\Connectors\PokeApiConnector;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -42,6 +43,6 @@ class GetPokeApiDataCommand extends Command
             ]);
         }
 
-        // (new PokeApiConnector())->connect();
+        (new PokeApiConnector())->connect();
     }
 }

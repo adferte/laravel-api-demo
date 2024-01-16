@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\PokeApiContext\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequest extends FormRequest
+class CreateUserRequest extends FormRequest
 {
+    const NAME = 'name';
     const EMAIL = 'email';
     const PASSWORD = 'password';
 
@@ -25,8 +26,9 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            self::EMAIL => ['required', 'email'],
-            self::PASSWORD => ['required'],
+            self::NAME => ['required', 'string'],
+            self::EMAIL => ['required', 'email', 'unique:users,email'],
+            self::PASSWORD => ['required', 'string'],
         ];
     }
 }

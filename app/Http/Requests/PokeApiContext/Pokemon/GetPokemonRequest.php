@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\PokeApiContext\Pokemon;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequest extends FormRequest
+class GetPokemonRequest extends FormRequest
 {
-    const EMAIL = 'email';
-    const PASSWORD = 'password';
+    const ID = 'id';
+    const POKEDEX = 'pokedex';
 
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            self::EMAIL => ['required', 'email'],
-            self::PASSWORD => ['required'],
+            self::POKEDEX => ['required', 'integer', 'gt:0', 'lte:' . config('pokeApi.pokemon_limit')],
         ];
     }
 }

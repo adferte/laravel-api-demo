@@ -1,32 +1,45 @@
 ## Laravel API Demo
 
-This is a small backend API using Laravel that consumes the public API [PokeAPI](https://pokeapi.co/), extracts data relative to
+This is a small backend API using Laravel that consumes the public API [PokeAPI](https://pokeapi.co/), extracts data
+relative to
 1st generation Pokémon and transforms them to fit a relational database (SQLite to make it simpler).
 
 Then it offers an API to the front-end where you can use the data for other purposes.
 
 ## Test it
+
 Set the environment file
+
 ```
 mv .env.example .env
 ```
+
 Install composer dependencies
+
 ```
 composer install
 ```
+
 Generate an app key
+
 ```
 php artisan key:generate
 ```
-Regenerate all database tables 
+
+Regenerate all database tables
+
 ```
 php artisan migrate:fresh
 ```
+
 Pull the data from the PokeAPI and create a testing user (test@mail.com) (password test)
+
 ```
 php artisan pokeapi:get
 ```
-Run a local server to test it out 
+
+Run a local server to test it out
+
 ```
 php artisan serve
 ```
@@ -37,8 +50,8 @@ In Postman, or a similar software, you can try the next endpoints:
 
 ### Login
 
-It will return an API token to use for the next endpoints or a validation error. You need to send the token as a Bearer 
-token in the next API call to make sure you are authorized. 
+It will return an API token to use for the next endpoints or a validation error. You need to send the token as a Bearer
+token in the next API call to make sure you are authorized.
 
 ```
 POST /api/login
@@ -47,19 +60,20 @@ POST /api/login
     'password': 'test',
 }
 ```
+
 ```
 1|zg2VEW2odlJgB0xynmexCBTMjPq5neHV4V8ihnOd
 ```
 
-
 ### Pokemon list
 
-It will return a list of all first generation Pokémon with its name, Pokédex ID, image and types. It also provides a 
+It will return a list of all first generation Pokémon with its name, Pokédex ID, image and types. It also provides a
 parameter for filtering by Pokédex ID.
 
 ```
 GET /api/pokemon?pokedex=121
 ```
+
 ```
 {
     "data": [
@@ -90,6 +104,7 @@ It will return a list of all Pokémon types
 ```
 GET /api/types
 ```
+
 ```
 {
     "data": [

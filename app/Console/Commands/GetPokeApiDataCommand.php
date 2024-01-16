@@ -2,10 +2,11 @@
 
 namespace App\Console\Commands;
 
-use App\Models\User;
-use App\PokeAPI\Connectors\PokeApiConnector;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Ramsey\Uuid\Uuid;
+use Src\ApiContext\Domain\Model\User\User;
 
 class GetPokeApiDataCommand extends Command
 {
@@ -28,14 +29,19 @@ class GetPokeApiDataCommand extends Command
      */
     public function handle(): void
     {
-        // (new PokeApiConnector())->connect();
-
         // Create user to test API functionality
         if (User::where(User::EMAIL, 'test@mail.com')->count() < 1) {
-            User::factory()->create([
+
+            User::create([
+                User::ID => Uuid::uuid4(),
+                User::NAME => Str::random(),
                 User::EMAIL => 'test@mail.com',
                 User::PASSWORD => Hash::make('test'),
+                User::REMEMBER_TOKEN => Str::random(10),
+                User::EMAIL_VERIFIED_AT => now(),
             ]);
         }
+
+        // (new PokeApiConnector())->connect();
     }
 }

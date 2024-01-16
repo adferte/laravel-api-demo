@@ -12,8 +12,28 @@ class EloquentUserRepository implements UserRepository
         $user->save();
     }
 
-    public function getUser(string $usedId): User
+    public function getUser(string $usedId): ?User
     {
         return User::find($usedId);
+    }
+
+    public function getUserByEmail(string $email): ?User
+    {
+        return User::where(User::EMAIL, $email)->first();
+    }
+
+    public function first(): ?User
+    {
+        return User::all()->first();
+    }
+
+    public function getAll(): array
+    {
+        $usersData = User::all();
+        $users = [];
+        foreach ($usersData as $user) {
+            $users[] = $user;
+        }
+        return $users;
     }
 }

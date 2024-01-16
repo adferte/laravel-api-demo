@@ -15,7 +15,7 @@ class GetPokemonHandler
     {
     }
 
-    public function __invoke(GetPokemonQuery $query)
+    public function __invoke(GetPokemonQuery $query): BusResponse
     {
         $pokemon = $this->pokemonRepository->getPokemon($query->pokedex());
         if (!$pokemon) {

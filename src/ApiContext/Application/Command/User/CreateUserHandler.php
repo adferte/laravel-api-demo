@@ -3,6 +3,7 @@
 namespace Src\ApiContext\Application\Command\User;
 
 use Ramsey\Uuid\Uuid;
+use Src\ApiContext\Domain\Exception\User\UserEmailInUseException;
 use Src\ApiContext\Domain\Model\User\User;
 use Src\ApiContext\Domain\Model\User\UserRepository;
 
@@ -16,6 +17,11 @@ class CreateUserHandler
 
     public function __invoke(CreateUserCommand $command): void
     {
+        $userWithSameEmail = $this->userRepository->getUserByEmail($command->email());
+        if ($userWithSameEmail) {
+            throw new UserEmailInUseException();
+        }
+
         $user = new User();
         $user->{User::ID} = Uuid::uuid4();
         $user->{User::NAME} = $command->name();

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\PokeApiContext\User;
 
+use App\Http\Controllers\BaseController;
 use App\Http\Requests\PokeApiContext\User\CreateUserRequest;
-use Src\ApiContext\Infrastructure\Controller\BaseController;
 
 class CreateUserController extends BaseController
 {

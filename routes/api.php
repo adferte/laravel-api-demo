@@ -18,18 +18,11 @@ Route::post('login', LoginController::class)->name('login');
 
 Route::middleware('auth:sanctum')->group(function () {
 
-    //Route::get('/me', GetCurrentUserController::class);
-
     // TODO
-    //  Acabar /me
-    //  Modificar el proceso que carga los datos de la API y pasarlo a DDD
-    //  Meter tests
-    //  Comprobar endpoints y ficheros modificados
     //  Comprobar que se lanza bien desde cero
-    //  Preparar GitHub y enviar por mail el proyecto
+    //  Preparar GitHub, README y enviar por mail el proyecto
 
     // ApiContext
     Route::name('apiContext')
-        ->prefix('pokeApi')
         ->group(__DIR__ . '/apiContext/routes.php');
 });

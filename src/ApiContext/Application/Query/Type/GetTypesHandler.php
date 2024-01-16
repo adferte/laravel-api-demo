@@ -14,7 +14,7 @@ class GetTypesHandler
     {
     }
 
-    public function __invoke(GetTypesQuery $query)
+    public function __invoke(GetTypesQuery $query): BusResponse
     {
         $types = $this->typeRepository->getAllTypes();
         $typesArr = [];

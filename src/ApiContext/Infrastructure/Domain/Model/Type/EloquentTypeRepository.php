@@ -19,4 +19,9 @@ class EloquentTypeRepository implements TypeRepository
         }
         return $types;
     }
+
+    public function getType(string $id): ?Type
+    {
+        return Type::find($id);
+    }
 }

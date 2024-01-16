@@ -33,6 +33,6 @@ class UserView
 
     public function email()
     {
-        return ucfirst($this->user->{User::NAME});
+        return $this->user->{User::EMAIL};
     }
 }
